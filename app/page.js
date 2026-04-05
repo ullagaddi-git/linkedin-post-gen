@@ -72,36 +72,61 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-50 py-10 px-4">
-      <div className="max-w-4xl mx-auto">
+    <main style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 50%, #f0f7ff 100%)', fontFamily: "'Inter', -apple-system, sans-serif" }}>
 
-        {/* Header */}
-        <div className="text-center mb-10">
-          <h1 className="text-4xl font-bold text-blue-700 mb-2">LinkedIn Post Generator</h1>
-          <p className="text-gray-500 text-lg">AI-powered posts tailored to your audience</p>
+      {/* Header */}
+      <div style={{ background: 'linear-gradient(135deg, #0077B5 0%, #005885 60%, #003f6b 100%)', padding: '48px 24px 56px', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 40%)', pointerEvents: 'none' }} />
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+          <div style={{ background: 'white', borderRadius: '10px', width: '44px', height: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <span style={{ color: '#0077B5', fontSize: '24px', fontWeight: '900', lineHeight: 1 }}>in</span>
+          </div>
+          <h1 style={{ color: 'white', fontSize: '32px', fontWeight: '800', margin: 0, letterSpacing: '-0.5px' }}>LinkedIn Post Generator</h1>
         </div>
+        <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '17px', margin: 0, fontWeight: '400' }}>
+          Generate AI-powered posts tailored to your audience in seconds
+        </p>
+      </div>
+
+      <div style={{ maxWidth: '860px', margin: '0 auto', padding: '0 20px 60px' }}>
 
         {/* Form Card */}
-        <div className="bg-white rounded-2xl shadow-md p-8 mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div style={{ background: 'white', borderRadius: '20px', boxShadow: '0 4px 24px rgba(0,0,0,0.08)', padding: '40px', marginTop: '-28px', position: 'relative', zIndex: 10 }}>
 
-            <div className="md:col-span-2">
-              <label className="block text-sm font-semibold text-gray-700 mb-1">Topic *</label>
+          <h2 style={{ fontSize: '18px', fontWeight: '700', color: '#1a1a2e', margin: '0 0 28px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ fontSize: '20px' }}>✍️</span> Craft Your Post
+          </h2>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+
+            {/* Topic - full width */}
+            <div style={{ gridColumn: '1 / -1' }}>
+              <label style={{ display: 'block', fontSize: '13px', fontWeight: '600', color: '#374151', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                Topic <span style={{ color: '#ef4444' }}>*</span>
+              </label>
               <input
                 type="text"
                 value={formData.topic}
                 onChange={e => setFormData({ ...formData, topic: e.target.value })}
+                onKeyDown={e => e.key === 'Enter' && handleGenerate()}
                 placeholder="e.g. The future of AI in healthcare"
-                className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                style={{ width: '100%', border: '2px solid #e5e7eb', borderRadius: '12px', padding: '14px 16px', fontSize: '15px', color: '#111827', background: '#fafafa', outline: 'none', boxSizing: 'border-box', transition: 'border-color 0.2s' }}
+                onFocus={e => e.target.style.borderColor = '#0077B5'}
+                onBlur={e => e.target.style.borderColor = '#e5e7eb'}
               />
             </div>
 
+            {/* Tone */}
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1">Tone</label>
+              <label style={{ display: 'block', fontSize: '13px', fontWeight: '600', color: '#374151', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                Tone
+              </label>
               <select
                 value={formData.tone}
                 onChange={e => setFormData({ ...formData, tone: e.target.value })}
-                className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                style={{ width: '100%', border: '2px solid #e5e7eb', borderRadius: '12px', padding: '14px 16px', fontSize: '15px', color: '#111827', background: '#fafafa', outline: 'none', boxSizing: 'border-box', cursor: 'pointer', appearance: 'none', backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 16px center' }}
+                onFocus={e => e.target.style.borderColor = '#0077B5'}
+                onBlur={e => e.target.style.borderColor = '#e5e7eb'}
               >
                 <option>Professional</option>
                 <option>Conversational</option>
@@ -112,96 +137,166 @@ export default function Home() {
               </select>
             </div>
 
+            {/* Audience */}
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1">Target Audience</label>
+              <label style={{ display: 'block', fontSize: '13px', fontWeight: '600', color: '#374151', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                Target Audience
+              </label>
               <input
                 type="text"
                 value={formData.audience}
                 onChange={e => setFormData({ ...formData, audience: e.target.value })}
-                placeholder="e.g. Startup founders, HR professionals"
-                className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="e.g. Startup founders, HR leaders"
+                style={{ width: '100%', border: '2px solid #e5e7eb', borderRadius: '12px', padding: '14px 16px', fontSize: '15px', color: '#111827', background: '#fafafa', outline: 'none', boxSizing: 'border-box' }}
+                onFocus={e => e.target.style.borderColor = '#0077B5'}
+                onBlur={e => e.target.style.borderColor = '#e5e7eb'}
               />
             </div>
 
-            <div className="md:col-span-2">
-              <label className="block text-sm font-semibold text-gray-700 mb-1">Additional Context</label>
+            {/* Context - full width */}
+            <div style={{ gridColumn: '1 / -1' }}>
+              <label style={{ display: 'block', fontSize: '13px', fontWeight: '600', color: '#374151', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                Additional Context
+              </label>
               <textarea
                 value={formData.context}
                 onChange={e => setFormData({ ...formData, context: e.target.value })}
-                placeholder="Any extra details, personal story, data points..."
+                placeholder="Any personal story, key data points, or specific angle you want to highlight..."
                 rows={3}
-                className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                style={{ width: '100%', border: '2px solid #e5e7eb', borderRadius: '12px', padding: '14px 16px', fontSize: '15px', color: '#111827', background: '#fafafa', outline: 'none', boxSizing: 'border-box', resize: 'none', fontFamily: 'inherit' }}
+                onFocus={e => e.target.style.borderColor = '#0077B5'}
+                onBlur={e => e.target.style.borderColor = '#e5e7eb'}
               />
             </div>
           </div>
 
           {error && (
-            <div className="mt-4 bg-red-50 border border-red-300 text-red-700 rounded-lg px-4 py-3">
-              {error}
+            <div style={{ marginTop: '16px', background: '#fef2f2', border: '1px solid #fecaca', color: '#dc2626', borderRadius: '10px', padding: '12px 16px', fontSize: '14px' }}>
+              ⚠️ {error}
             </div>
           )}
 
           <button
             onClick={handleGenerate}
             disabled={loading}
-            className="mt-6 w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-300 text-white font-semibold py-3 rounded-lg transition-colors"
+            style={{
+              marginTop: '24px', width: '100%',
+              background: loading ? '#93c5fd' : 'linear-gradient(135deg, #0077B5 0%, #005885 100%)',
+              color: 'white', border: 'none', borderRadius: '12px',
+              padding: '16px', fontSize: '16px', fontWeight: '700',
+              cursor: loading ? 'not-allowed' : 'pointer',
+              letterSpacing: '0.3px', transition: 'all 0.2s',
+              boxShadow: loading ? 'none' : '0 4px 16px rgba(0,119,181,0.35)'
+            }}
           >
-            {loading ? 'Generating...' : '✨ Generate LinkedIn Posts'}
+            {loading ? (
+              <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
+                <span style={{ display: 'inline-block', width: '18px', height: '18px', border: '2px solid rgba(255,255,255,0.4)', borderTopColor: 'white', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
+                Generating your posts...
+              </span>
+            ) : '✨ Generate LinkedIn Posts'}
           </button>
+
+          <style>{`
+            @keyframes spin { to { transform: rotate(360deg); } }
+            @media (max-width: 600px) {
+              .form-grid { grid-template-columns: 1fr !important; }
+            }
+          `}</style>
         </div>
 
         {/* Results */}
         {result && (
-          <div className="space-y-6">
+          <div style={{ marginTop: '32px' }}>
 
-            {/* Posts */}
+            {/* Section label */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
+              <div style={{ flex: 1, height: '1px', background: '#e5e7eb' }} />
+              <span style={{ fontSize: '13px', fontWeight: '600', color: '#6b7280', textTransform: 'uppercase', letterSpacing: '1px' }}>Generated Posts</span>
+              <div style={{ flex: 1, height: '1px', background: '#e5e7eb' }} />
+            </div>
+
+            {/* Post variations */}
             {result.posts?.map((post, i) => (
-              <div key={post.id || i} className="bg-white rounded-2xl shadow-md p-6">
-                <div className="flex justify-between items-center mb-3">
-                  <h3 className="font-semibold text-gray-700">Variation {i + 1}</h3>
+              <div key={post.id || i} style={{ background: 'white', borderRadius: '16px', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', padding: '28px', marginBottom: '16px', border: '1px solid #f3f4f6' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <div style={{ background: 'linear-gradient(135deg, #0077B5, #005885)', color: 'white', borderRadius: '8px', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', fontWeight: '700' }}>
+                      {i + 1}
+                    </div>
+                    <span style={{ fontWeight: '600', color: '#374151', fontSize: '15px' }}>Variation {i + 1}</span>
+                  </div>
                   <button
                     onClick={() => handleCopy(post.content, post.id || i)}
-                    className="text-sm bg-blue-50 hover:bg-blue-100 text-blue-700 px-4 py-1.5 rounded-lg transition-colors"
+                    style={{
+                      background: copied === (post.id || i) ? '#dcfce7' : '#f0f9ff',
+                      color: copied === (post.id || i) ? '#16a34a' : '#0077B5',
+                      border: `1px solid ${copied === (post.id || i) ? '#86efac' : '#bae6fd'}`,
+                      borderRadius: '8px', padding: '7px 16px', fontSize: '13px',
+                      fontWeight: '600', cursor: 'pointer', transition: 'all 0.2s'
+                    }}
                   >
                     {copied === (post.id || i) ? '✅ Copied!' : '📋 Copy'}
                   </button>
                 </div>
-                <p className="text-gray-800 whitespace-pre-wrap leading-relaxed">{post.content}</p>
+                <p style={{ color: '#374151', lineHeight: '1.75', fontSize: '15px', margin: 0, whiteSpace: 'pre-wrap' }}>{post.content}</p>
               </div>
             ))}
 
             {/* Generated Image */}
             {result.imageUrl && (
-              <div className="bg-white rounded-2xl shadow-md p-6">
-                <div className="flex justify-between items-center mb-4">
-                  <h3 className="font-semibold text-gray-700">Generated Image</h3>
+              <div style={{ background: 'white', borderRadius: '16px', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', padding: '28px', border: '1px solid #f3f4f6' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <span style={{ fontSize: '20px' }}>🖼️</span>
+                    <span style={{ fontWeight: '600', color: '#374151', fontSize: '15px' }}>AI-Generated Banner</span>
+                    <span style={{ background: '#f0fdf4', color: '#16a34a', border: '1px solid #bbf7d0', borderRadius: '20px', padding: '2px 10px', fontSize: '12px', fontWeight: '600' }}>Topic-matched</span>
+                  </div>
                   <button
                     onClick={handleDownload}
                     disabled={downloading}
-                    className="text-sm bg-green-50 hover:bg-green-100 text-green-700 px-4 py-1.5 rounded-lg transition-colors"
+                    style={{
+                      background: downloading ? '#f9fafb' : '#f0fdf4',
+                      color: downloading ? '#9ca3af' : '#16a34a',
+                      border: `1px solid ${downloading ? '#e5e7eb' : '#86efac'}`,
+                      borderRadius: '8px', padding: '7px 16px', fontSize: '13px',
+                      fontWeight: '600', cursor: downloading ? 'not-allowed' : 'pointer', transition: 'all 0.2s'
+                    }}
                   >
                     {downloading ? 'Downloading...' : '⬇️ Download'}
                   </button>
                 </div>
 
                 {imgError ? (
-                  <div className="w-full h-64 bg-gradient-to-br from-blue-600 to-blue-400 rounded-xl flex items-center justify-center">
-                    <div className="text-center text-white">
-                      <div className="text-6xl font-black mb-2">in</div>
-                      <div className="text-lg font-semibold">{formData.topic}</div>
-                      <div className="text-sm opacity-75 mt-1">Download to get full banner</div>
-                    </div>
+                  <div style={{ background: 'linear-gradient(135deg, #0f172a, #0077B5, #00A0DC)', borderRadius: '12px', height: '280px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '12px' }}>
+                    <div style={{ fontSize: '56px', fontWeight: '900', color: 'white' }}>in</div>
+                    <div style={{ fontSize: '20px', fontWeight: '700', color: 'white', textAlign: 'center', padding: '0 24px' }}>{formData.topic}</div>
+                    <div style={{ fontSize: '13px', color: 'rgba(255,255,255,0.65)' }}>Download to get your full banner</div>
                   </div>
                 ) : (
-                  <img
-                    src={result.imageUrl}
-                    alt="Generated LinkedIn banner"
-                    className="w-full rounded-xl object-cover max-h-80"
-                    onError={() => setImgError(true)}
-                  />
+                  <div style={{ position: 'relative' }}>
+                    <img
+                      src={result.imageUrl}
+                      alt="Generated LinkedIn banner"
+                      style={{ width: '100%', borderRadius: '12px', objectFit: 'cover', maxHeight: '340px', display: 'block' }}
+                      onError={() => setImgError(true)}
+                    />
+                    <div style={{ position: 'absolute', bottom: '12px', right: '12px', background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(8px)', color: 'white', borderRadius: '8px', padding: '4px 10px', fontSize: '12px' }}>
+                      AI Generated · Topic: {formData.topic}
+                    </div>
+                  </div>
                 )}
               </div>
             )}
+          </div>
+        )}
+
+        {/* Empty state */}
+        {!result && !loading && (
+          <div style={{ textAlign: 'center', padding: '48px 24px', color: '#9ca3af' }}>
+            <div style={{ fontSize: '48px', marginBottom: '12px' }}>💼</div>
+            <p style={{ fontSize: '16px', fontWeight: '500', margin: '0 0 4px' }}>Ready to create your next viral post?</p>
+            <p style={{ fontSize: '14px', margin: 0 }}>Fill in your topic above and hit Generate</p>
           </div>
         )}
       </div>

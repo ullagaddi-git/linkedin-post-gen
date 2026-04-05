@@ -42,31 +42,11 @@ Respond ONLY with this JSON, no markdown, no extra text:
 
     const parsed = JSON.parse(match[0])
 
-    // 1. Try Lexica.art — free AI image search, no key needed
-    let imageUrl = null
-    try {
-      const lexicaQuery = encodeURIComponent(`${topic} professional corporate`)
-      const lexicaRes = await fetch(`https://lexica.art/api/v1/search?q=${lexicaQuery}`, {
-        headers: { Accept: 'application/json' }
-      })
-      if (lexicaRes.ok) {
-        const lexicaData = await lexicaRes.json()
-        if (lexicaData.images?.length > 0) {
-          const idx = Math.floor(Math.random() * Math.min(8, lexicaData.images.length))
-          imageUrl = lexicaData.images[idx].src
-        }
-      }
-    } catch (e) {
-      console.log('Lexica.art failed:', e.message)
-    }
-
-    // 2. Fallback to Pollinations (browser loads it directly)
-    if (!imageUrl) {
-      const imagePrompt = encodeURIComponent(
-        `Photorealistic professional LinkedIn banner about ${topic}, cinematic lighting, no text, corporate aesthetic`
-      )
-      imageUrl = `https://image.pollinations.ai/prompt/${imagePrompt}?width=1024&height=1024&nologo=true&seed=${Date.now()}`
-    }
+    // Generate a highly topic-specific image using Pollinations AI
+    const imagePrompt = encodeURIComponent(
+      `Professional LinkedIn banner illustration about "${topic}", ${audience ? `targeting ${audience},` : ''} modern flat design, clean corporate aesthetic, bold typography concept, blue and white color scheme, abstract business concept art, no people, no faces, minimalist icons, professional background`
+    )
+    const imageUrl = `https://image.pollinations.ai/prompt/${imagePrompt}?width=1200&height=630&nologo=true&enhance=true&seed=${Date.now()}`
 
     return Response.json({ posts: parsed.posts, imageUrl, topic })
 
