@@ -1,3 +1,288 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --li-blue: #0077B5;
+  --li-dark: #005885;
+  --li-darker: #003f6b;
+  --radius: 14px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: #f1f5f9;
+}
+
+/* Animated gradient background */
+.app-bg {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 10% 20%, rgba(0, 119, 181, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 80%, rgba(0, 88, 133, 0.10) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(0, 160, 220, 0.06) 0%, transparent 60%),
+    linear-gradient(160deg, #f8faff 0%, #eef4fb 40%, #f0f7ff 100%);
+}
+
+/* Premium header */
+.hero-header {
+  background: linear-gradient(135deg, #003f6b 0%, #005885 35%, #0077B5 70%, #0096d6 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 56px 24px 72px;
+  text-align: center;
+}
+
+.hero-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 50%, rgba(255,255,255,0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 20%, rgba(255,255,255,0.06) 0%, transparent 35%),
+    radial-gradient(circle at 50% 100%, rgba(0,0,0,0.15) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.hero-header::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: #f8faff;
+  clip-path: ellipse(55% 100% at 50% 100%);
+}
+
+/* Floating dots decoration */
+.hero-dot {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+}
+
+/* Premium card */
+.card {
+  background: white;
+  border-radius: 20px;
+  box-shadow:
+    0 1px 3px rgba(0,0,0,0.04),
+    0 4px 16px rgba(0,0,0,0.06),
+    0 12px 32px rgba(0,0,0,0.04);
+  border: 1px solid rgba(255,255,255,0.8);
+}
+
+.card-hover {
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+.card-hover:hover {
+  box-shadow:
+    0 2px 8px rgba(0,0,0,0.06),
+    0 8px 24px rgba(0,0,0,0.09),
+    0 20px 48px rgba(0,0,0,0.06);
+  transform: translateY(-2px);
+}
+
+/* Premium inputs */
+.field-label {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 8px;
+}
+
+.field-input {
+  width: 100%;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 11px;
+  padding: 13px 16px;
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  color: #111827;
+  background: #fafbfc;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.field-input:focus {
+  border-color: #0077B5;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(0,119,181,0.08);
+}
+
+.field-input::placeholder {
+  color: #9ca3af;
+}
+
+/* Primary button */
+.btn-primary {
+  width: 100%;
+  background: linear-gradient(135deg, #0077B5 0%, #005885 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 24px;
+  font-size: 15.5px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  letter-spacing: 0.2px;
+  transition: all 0.25s;
+  box-shadow: 0 4px 16px rgba(0,119,181,0.3), 0 1px 4px rgba(0,0,0,0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #0088cc 0%, #006699 100%);
+  box-shadow: 0 6px 24px rgba(0,119,181,0.4), 0 2px 8px rgba(0,0,0,0.15);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0,119,181,0.3);
+}
+
+.btn-primary:disabled {
+  background: linear-gradient(135deg, #7ab8d9 0%, #5a9ab9 100%);
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Copy button */
+.btn-copy {
+  background: #f0f9ff;
+  color: #0077B5;
+  border: 1.5px solid #bae6fd;
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-copy:hover { background: #e0f2fe; border-color: #7dd3fc; }
+.btn-copy.copied { background: #f0fdf4; color: #16a34a; border-color: #86efac; }
+
+/* Download button */
+.btn-download {
+  background: #f0fdf4;
+  color: #16a34a;
+  border: 1.5px solid #86efac;
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-download:hover:not(:disabled) { background: #dcfce7; border-color: #4ade80; }
+.btn-download:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Spinner */
+@keyframes spin { to { transform: rotate(360deg); } }
+.spinner {
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  border: 2.5px solid rgba(255,255,255,0.35);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+/* Fade-in animation for results */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up {
+  animation: fadeUp 0.4s ease forwards;
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 36px 0 20px;
+}
+.divider-line { flex: 1; height: 1px; background: #e5e7eb; }
+.divider-text { font-size: 11px; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 1.2px; white-space: nowrap; }
+
+/* Badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #f0fdf4;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+/* Variation number */
+.var-badge {
+  background: linear-gradient(135deg, #0077B5, #005885);
+  color: white;
+  border-radius: 8px;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+/* Post text */
+.post-text {
+  color: #374151;
+  line-height: 1.78;
+  font-size: 14.5px;
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .form-grid { grid-template-columns: 1fr !important; }
+  .hero-header { padding: 40px 16px 60px; }
+}
+
+/* Select arrow fix */
+select.field-input {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+  cursor: pointer;
+}
