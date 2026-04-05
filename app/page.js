@@ -51,213 +51,248 @@ export default function Home() {
   return (
     <div className="app-bg">
 
-      {/* ── Hero Header ── */}
+      {/* ══════════════════════════════
+          HERO HEADER — Deep Navy + LinkedIn Sky Blue
+      ══════════════════════════════ */}
       <header className="hero-header">
-        {/* Decorative dots */}
-        <div className="hero-dot" style={{ width: 180, height: 180, top: -60, left: -40 }} />
-        <div className="hero-dot" style={{ width: 120, height: 120, top: 20, right: 60, opacity: 0.06 }} />
-        <div className="hero-dot" style={{ width: 80,  height: 80,  bottom: 30, left: '30%', opacity: 0.08 }} />
 
-        <div style={{ position: 'relative', zIndex: 2 }}>
-          {/* Logo pill */}
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: 'rgba(255,255,255,0.12)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: 50, padding: '6px 18px 6px 8px', marginBottom: 24 }}>
-            <div style={{ background: 'white', borderRadius: 8, width: 32, height: 32, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-              <span style={{ color: '#0077B5', fontSize: 18, fontWeight: 900, lineHeight: 1 }}>in</span>
+        {/* Glow orbs */}
+        <div className="hero-glow-orb" style={{ width: 500, height: 300, background: 'rgba(10,102,194,0.35)', top: -80, left: '50%', transform: 'translateX(-50%)' }} />
+        <div className="hero-glow-orb" style={{ width: 260, height: 260, background: 'rgba(0,160,220,0.15)', top: 40, left: '10%' }} />
+        <div className="hero-glow-orb" style={{ width: 200, height: 200, background: 'rgba(112,181,249,0.10)', top: 20, right: '8%' }} />
+
+        <div style={{ position: 'relative', zIndex: 3, maxWidth: 700, margin: '0 auto' }}>
+
+          {/* Top pill badge */}
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(112,181,249,0.12)', border: '1px solid rgba(112,181,249,0.25)', borderRadius: 50, padding: '7px 20px 7px 10px', marginBottom: 32 }}>
+            <div style={{ background: '#0A66C2', borderRadius: 7, width: 28, height: 28, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <span style={{ color: 'white', fontSize: 15, fontWeight: 900, lineHeight: 1 }}>in</span>
             </div>
-            <span style={{ color: 'rgba(255,255,255,0.9)', fontSize: 13, fontWeight: 600, letterSpacing: 0.3 }}>AI-Powered Content</span>
+            <span style={{ color: '#70B5F9', fontSize: 13, fontWeight: 600, letterSpacing: 0.4 }}>AI-Powered LinkedIn Content</span>
           </div>
 
-          <h1 style={{ color: 'white', fontSize: 'clamp(28px, 5vw, 44px)', fontWeight: 900, margin: '0 0 14px', letterSpacing: -1, lineHeight: 1.1 }}>
-            LinkedIn Post Generator
+          {/* Main headline — LinkedIn sky blue */}
+          <h1 style={{
+            color: '#70B5F9',
+            fontSize: 'clamp(36px, 6vw, 58px)',
+            fontWeight: 900,
+            margin: '0 0 18px',
+            letterSpacing: -1.5,
+            lineHeight: 1.08,
+            textShadow: '0 0 60px rgba(112,181,249,0.4), 0 2px 4px rgba(0,0,0,0.3)'
+          }}>
+            LinkedIn Post<br />Generator
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.72)', fontSize: 17, margin: 0, fontWeight: 400, maxWidth: 460, marginLeft: 'auto', marginRight: 'auto' }}>
-            Create scroll-stopping posts tailored to your audience — powered by AI
+
+          {/* Subtitle */}
+          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 18, margin: '0 auto 44px', fontWeight: 400, maxWidth: 480, lineHeight: 1.6 }}>
+            Transform your ideas into scroll-stopping LinkedIn posts — powered by AI, tailored to your audience
           </p>
 
-          {/* Stats strip */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: 32, marginTop: 28, flexWrap: 'wrap' }}>
-            {[['3', 'Post Variations'], ['AI', 'Image Included'], ['1-Click', 'Copy & Share']].map(([val, label]) => (
-              <div key={label} style={{ textAlign: 'center' }}>
-                <div style={{ color: 'white', fontSize: 20, fontWeight: 800 }}>{val}</div>
-                <div style={{ color: 'rgba(255,255,255,0.55)', fontSize: 12, fontWeight: 500, marginTop: 2 }}>{label}</div>
+          {/* Stat pills row */}
+          <div style={{ display: 'flex', justifyContent: 'center', gap: 12, flexWrap: 'wrap' }}>
+            {[
+              { icon: '✦', label: '3 Unique Variations' },
+              { icon: '🖼️', label: 'AI Banner Included' },
+              { icon: '⚡', label: 'Instant Results' },
+              { icon: '📋', label: '1-Click Copy' },
+            ].map(s => (
+              <div key={s.label} className="stat-pill">
+                <span style={{ fontSize: 14 }}>{s.icon}</span>
+                <span style={{ color: 'rgba(255,255,255,0.75)', fontSize: 13, fontWeight: 500 }}>{s.label}</span>
               </div>
             ))}
           </div>
         </div>
       </header>
 
-      {/* ── Main Content ── */}
-      <main style={{ maxWidth: 800, margin: '0 auto', padding: '0 20px 80px' }}>
+      {/* ══════════════════════════════
+          CONTENT AREA — Light slate background
+      ══════════════════════════════ */}
+      <div className="content-area">
+        <div style={{ maxWidth: 780, margin: '0 auto' }}>
 
-        {/* ── Form Card ── */}
-        <div className="card" style={{ marginTop: -32, position: 'relative', zIndex: 10, padding: '36px 40px 40px' }}>
+          {/* ── Form Card ── */}
+          <div className="card" style={{ padding: '40px 44px 44px' }}>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 28 }}>
-            <div style={{ width: 4, height: 22, background: 'linear-gradient(180deg,#0077B5,#005885)', borderRadius: 4 }} />
-            <h2 style={{ fontSize: 17, fontWeight: 800, color: '#111827', margin: 0 }}>Create Your Post</h2>
+            {/* Card title */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 32 }}>
+              <div style={{ width: 4, height: 26, background: 'linear-gradient(180deg,#0A66C2,#004182)', borderRadius: 4, flexShrink: 0 }} />
+              <div>
+                <h2 style={{ fontSize: 19, fontWeight: 800, color: '#0f172a', margin: 0, letterSpacing: -0.3 }}>Craft Your Post</h2>
+                <p style={{ fontSize: 13, color: '#94a3b8', margin: '4px 0 0', fontWeight: 400 }}>Fill in the details below to generate AI-powered LinkedIn content</p>
+              </div>
+            </div>
+
+            <div className="form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 22 }}>
+
+              {/* Topic — full width */}
+              <div style={{ gridColumn: '1 / -1' }}>
+                <label className="field-label">
+                  Topic <span style={{ color: '#ef4444', fontWeight: 800 }}>*</span>
+                </label>
+                <input
+                  className="field-input"
+                  type="text"
+                  value={formData.topic}
+                  onChange={e => setFormData({ ...formData, topic: e.target.value })}
+                  onKeyDown={e => e.key === 'Enter' && handleGenerate()}
+                  placeholder="e.g. How AI is reshaping project management in 2025..."
+                  style={{ fontSize: 16, padding: '15px 18px' }}
+                />
+              </div>
+
+              {/* Tone */}
+              <div>
+                <label className="field-label">Writing Tone</label>
+                <select
+                  className="field-input"
+                  value={formData.tone}
+                  onChange={e => setFormData({ ...formData, tone: e.target.value })}
+                >
+                  <option>Professional</option>
+                  <option>Conversational</option>
+                  <option>Inspirational</option>
+                  <option>Educational</option>
+                  <option>Storytelling</option>
+                  <option>Bold & Direct</option>
+                </select>
+              </div>
+
+              {/* Audience */}
+              <div>
+                <label className="field-label">Target Audience</label>
+                <input
+                  className="field-input"
+                  type="text"
+                  value={formData.audience}
+                  onChange={e => setFormData({ ...formData, audience: e.target.value })}
+                  placeholder="e.g. CTOs, HR Managers, Startup Founders..."
+                />
+              </div>
+
+              {/* Context — full width */}
+              <div style={{ gridColumn: '1 / -1' }}>
+                <label className="field-label">
+                  Additional Context
+                  <span style={{ color: '#94a3b8', fontSize: 11, textTransform: 'none', letterSpacing: 0, fontWeight: 500, marginLeft: 6 }}>— optional</span>
+                </label>
+                <textarea
+                  className="field-input"
+                  value={formData.context}
+                  onChange={e => setFormData({ ...formData, context: e.target.value })}
+                  placeholder="Share a personal story, key data points, or a specific angle you want the post to highlight..."
+                  rows={4}
+                  style={{ resize: 'none', lineHeight: 1.65 }}
+                />
+              </div>
+            </div>
+
+            {/* Error */}
+            {error && (
+              <div style={{ marginTop: 18, display: 'flex', alignItems: 'center', gap: 10, background: '#fef2f2', border: '1px solid #fecaca', color: '#dc2626', borderRadius: 11, padding: '13px 18px', fontSize: 14 }}>
+                <span style={{ fontSize: 18 }}>⚠️</span> {error}
+              </div>
+            )}
+
+            {/* Generate button */}
+            <button className="btn-primary" onClick={handleGenerate} disabled={loading} style={{ marginTop: 28 }}>
+              {loading
+                ? <><span className="spinner" />Generating your posts…</>
+                : <>✨&nbsp;&nbsp;Generate LinkedIn Posts</>
+              }
+            </button>
+
+            {/* Footnote */}
+            <p style={{ textAlign: 'center', fontSize: 12, color: '#94a3b8', margin: '14px 0 0', fontWeight: 500, letterSpacing: 0.2 }}>
+              Powered by Llama 3.3 · Generates 3 unique variations + an AI-matched banner image
+            </p>
           </div>
 
-          <div className="form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
+          {/* ── Results ── */}
+          {result && (
+            <div className="fade-up" style={{ marginTop: 36 }}>
 
-            {/* Topic */}
-            <div style={{ gridColumn: '1 / -1' }}>
-              <label className="field-label">Topic <span style={{ color: '#ef4444', fontSize: 13 }}>*</span></label>
-              <input
-                className="field-input"
-                type="text"
-                value={formData.topic}
-                onChange={e => setFormData({ ...formData, topic: e.target.value })}
-                onKeyDown={e => e.key === 'Enter' && handleGenerate()}
-                placeholder="e.g. The future of AI in healthcare, Leadership lessons from 10 years..."
-              />
-            </div>
+              <div className="divider">
+                <div className="divider-line" />
+                <span className="divider-text">✦ Your Generated Posts</span>
+                <div className="divider-line" />
+              </div>
 
-            {/* Tone */}
-            <div>
-              <label className="field-label">Tone</label>
-              <select className="field-input" value={formData.tone} onChange={e => setFormData({ ...formData, tone: e.target.value })}>
-                <option>Professional</option>
-                <option>Conversational</option>
-                <option>Inspirational</option>
-                <option>Educational</option>
-                <option>Storytelling</option>
-                <option>Bold & Direct</option>
-              </select>
-            </div>
+              {/* Post variation cards */}
+              {result.posts?.map((post, i) => (
+                <div className="card card-hover" key={post.id || i} style={{ padding: '28px 32px', marginBottom: 16 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 18 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                      <span className="var-badge">{i + 1}</span>
+                      <div>
+                        <div style={{ fontWeight: 700, color: '#0f172a', fontSize: 15 }}>Variation {i + 1}</div>
+                        <div style={{ fontSize: 12, color: '#94a3b8', marginTop: 2 }}>{post.content?.length || 0} characters</div>
+                      </div>
+                    </div>
+                    <button
+                      className={`btn-copy${copied === (post.id || i) ? ' copied' : ''}`}
+                      onClick={() => handleCopy(post.content, post.id || i)}
+                    >
+                      {copied === (post.id || i) ? '✅ Copied!' : '📋 Copy Post'}
+                    </button>
+                  </div>
+                  <div style={{ height: 1, background: '#f1f5f9', margin: '0 0 18px' }} />
+                  <p className="post-text">{post.content}</p>
+                </div>
+              ))}
 
-            {/* Audience */}
-            <div>
-              <label className="field-label">Target Audience</label>
-              <input
-                className="field-input"
-                type="text"
-                value={formData.audience}
-                onChange={e => setFormData({ ...formData, audience: e.target.value })}
-                placeholder="e.g. Startup founders, HR leaders"
-              />
-            </div>
-
-            {/* Context */}
-            <div style={{ gridColumn: '1 / -1' }}>
-              <label className="field-label">Additional Context <span style={{ color: '#9ca3af', fontSize: 11, textTransform: 'none', letterSpacing: 0, fontWeight: 500 }}> — optional</span></label>
-              <textarea
-                className="field-input"
-                value={formData.context}
-                onChange={e => setFormData({ ...formData, context: e.target.value })}
-                placeholder="Any personal story, statistics, or specific angle you want to highlight..."
-                rows={3}
-                style={{ resize: 'none' }}
-              />
-            </div>
-          </div>
-
-          {error && (
-            <div style={{ marginTop: 16, display: 'flex', alignItems: 'center', gap: 10, background: '#fef2f2', border: '1px solid #fecaca', color: '#dc2626', borderRadius: 10, padding: '12px 16px', fontSize: 14 }}>
-              <span style={{ fontSize: 18 }}>⚠️</span> {error}
+              {/* Image card */}
+              {result.imageUrl && (
+                <div className="card" style={{ padding: '28px 32px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 18 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                      <div style={{ width: 38, height: 38, background: '#eff6ff', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, flexShrink: 0 }}>🖼️</div>
+                      <div>
+                        <div style={{ fontWeight: 700, color: '#0f172a', fontSize: 15 }}>AI Banner Image</div>
+                        <div style={{ fontSize: 12, color: '#94a3b8', marginTop: 2 }}>Generated to match your topic</div>
+                      </div>
+                      <span className="badge-sky">✦ Topic-matched</span>
+                    </div>
+                    <button className="btn-download" onClick={handleDownload} disabled={downloading}>
+                      {downloading ? 'Downloading…' : '⬇️ Download'}
+                    </button>
+                  </div>
+                  <div style={{ height: 1, background: '#f1f5f9', margin: '0 0 18px' }} />
+                  {imgError ? (
+                    <div style={{ background: 'linear-gradient(135deg, #001B41, #0A66C2, #00A0DC)', borderRadius: 14, minHeight: 280, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
+                      <span style={{ fontSize: 54, fontWeight: 900, color: 'white' }}>in</span>
+                      <span style={{ fontSize: 22, fontWeight: 700, color: 'white', textAlign: 'center', padding: '0 24px' }}>{formData.topic}</span>
+                      <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)' }}>Download to get full resolution banner</span>
+                    </div>
+                  ) : (
+                    <div style={{ position: 'relative', borderRadius: 14, overflow: 'hidden' }}>
+                      <img
+                        src={result.imageUrl}
+                        alt="AI-generated LinkedIn banner"
+                        style={{ width: '100%', display: 'block', maxHeight: 380, objectFit: 'cover', borderRadius: 14 }}
+                        onError={() => setImgError(true)}
+                      />
+                      <div style={{ position: 'absolute', bottom: 14, left: 14, background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(10px)', color: 'white', borderRadius: 8, padding: '5px 12px', fontSize: 12, fontWeight: 500 }}>
+                        Topic: {formData.topic}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           )}
 
-          <button className="btn-primary" onClick={handleGenerate} disabled={loading} style={{ marginTop: 24 }}>
-            {loading
-              ? <><span className="spinner" />Generating your posts…</>
-              : '✨  Generate LinkedIn Posts'
-            }
-          </button>
-
-          {/* Helper text */}
-          <p style={{ textAlign: 'center', fontSize: 12.5, color: '#9ca3af', margin: '12px 0 0', fontWeight: 500 }}>
-            Powered by Llama 3.3 · Generates 3 unique variations + a banner image
-          </p>
-        </div>
-
-        {/* ── Results ── */}
-        {result && (
-          <div className="fade-up">
-
-            <div className="divider">
-              <div className="divider-line" />
-              <span className="divider-text">✦ Generated Results</span>
-              <div className="divider-line" />
+          {/* Empty state */}
+          {!result && !loading && (
+            <div style={{ textAlign: 'center', padding: '64px 24px 40px' }}>
+              <div style={{ width: 76, height: 76, background: 'white', borderRadius: 22, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 34, margin: '0 auto 18px', boxShadow: '0 4px 20px rgba(0,0,0,0.08)' }}>💼</div>
+              <p style={{ fontSize: 18, fontWeight: 700, color: '#334155', margin: '0 0 8px' }}>Ready to craft your next viral post?</p>
+              <p style={{ fontSize: 14, color: '#94a3b8', margin: 0, lineHeight: 1.6 }}>Enter your topic above and let AI generate<br />professional LinkedIn content in seconds</p>
             </div>
-
-            {/* Post cards */}
-            {result.posts?.map((post, i) => (
-              <div className="card card-hover" key={post.id || i} style={{ padding: '26px 28px', marginBottom: 14 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 18 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <span className="var-badge">{i + 1}</span>
-                    <div>
-                      <div style={{ fontWeight: 700, color: '#111827', fontSize: 15, lineHeight: 1 }}>Variation {i + 1}</div>
-                      <div style={{ fontSize: 12, color: '#9ca3af', marginTop: 3 }}>{post.content?.length || 0} characters</div>
-                    </div>
-                  </div>
-                  <button
-                    className={`btn-copy${copied === (post.id || i) ? ' copied' : ''}`}
-                    onClick={() => handleCopy(post.content, post.id || i)}
-                  >
-                    {copied === (post.id || i) ? '✅ Copied!' : '📋 Copy Post'}
-                  </button>
-                </div>
-
-                {/* Divider */}
-                <div style={{ height: 1, background: '#f3f4f6', margin: '0 0 18px' }} />
-
-                <p className="post-text">{post.content}</p>
-              </div>
-            ))}
-
-            {/* Banner Image card */}
-            {result.imageUrl && (
-              <div className="card" style={{ padding: '26px 28px', marginTop: 8 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 18 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <div style={{ width: 36, height: 36, background: '#f0f9ff', borderRadius: 9, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18 }}>🖼️</div>
-                    <div>
-                      <div style={{ fontWeight: 700, color: '#111827', fontSize: 15, lineHeight: 1 }}>AI Banner Image</div>
-                      <div style={{ fontSize: 12, color: '#9ca3af', marginTop: 3 }}>Generated from your topic</div>
-                    </div>
-                    <span className="badge">✦ Topic-matched</span>
-                  </div>
-                  <button className="btn-download" onClick={handleDownload} disabled={downloading}>
-                    {downloading ? 'Downloading…' : '⬇️ Download'}
-                  </button>
-                </div>
-
-                <div style={{ height: 1, background: '#f3f4f6', margin: '0 0 18px' }} />
-
-                {imgError ? (
-                  <div style={{ background: 'linear-gradient(135deg, #003f6b, #0077B5, #00a0dc)', borderRadius: 12, minHeight: 260, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
-                    <span style={{ fontSize: 52, fontWeight: 900, color: 'white' }}>in</span>
-                    <span style={{ fontSize: 20, fontWeight: 700, color: 'white', textAlign: 'center', padding: '0 24px' }}>{formData.topic}</span>
-                    <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)' }}>Download to get full resolution</span>
-                  </div>
-                ) : (
-                  <div style={{ position: 'relative', borderRadius: 12, overflow: 'hidden' }}>
-                    <img
-                      src={result.imageUrl}
-                      alt="Generated LinkedIn banner"
-                      style={{ width: '100%', display: 'block', maxHeight: 360, objectFit: 'cover', borderRadius: 12 }}
-                      onError={() => setImgError(true)}
-                    />
-                    <div style={{ position: 'absolute', bottom: 12, left: 12, background: 'rgba(0,0,0,0.45)', backdropFilter: 'blur(8px)', color: 'white', borderRadius: 7, padding: '4px 11px', fontSize: 12, fontWeight: 500 }}>
-                      Topic: {formData.topic}
-                    </div>
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* Empty state */}
-        {!result && !loading && (
-          <div style={{ textAlign: 'center', padding: '56px 24px 40px' }}>
-            <div style={{ width: 72, height: 72, background: 'white', borderRadius: 20, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 32, margin: '0 auto 16px', boxShadow: '0 4px 16px rgba(0,0,0,0.08)' }}>💼</div>
-            <p style={{ fontSize: 17, fontWeight: 700, color: '#374151', margin: '0 0 6px' }}>Ready to craft your next post?</p>
-            <p style={{ fontSize: 14, color: '#9ca3af', margin: 0 }}>Fill in your topic above and let AI do the heavy lifting</p>
-          </div>
-        )}
-      </main>
+          )}
+        </div>
+      </div>
     </div>
   )
 }
