@@ -15,7 +15,7 @@ Each post must have: strong hook, 150-300 words, emojis, call to action, 3-5 has
 
 Respond ONLY with this JSON, no markdown, no extra text:
 {"posts":[{"id":1,"content":"post 1 here"},{"id":2,"content":"post 2 here"},{"id":3,"content":"post 3 here"}]}`
-
+// model updated: llama-3.1-70b-versatile
     const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
       headers: {
